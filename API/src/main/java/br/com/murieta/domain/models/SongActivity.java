@@ -1,5 +1,6 @@
 package br.com.murieta.domain.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -9,26 +10,27 @@ import java.util.List;
 
 @Data
 @Entity
-public class Connections {
+public class SongActivity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String songActivitys;
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "connections_id")
+    private Connections connections;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "song_word",
-            joinColumns = @JoinColumn(name = "song_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "word_id", referencedColumnName = "id"))
-    @Fetch(FetchMode.SUBSELECT)
-    private List<Word> words;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "song_id")
+    private Song song;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "song_phrases",
-            joinColumns = @JoinColumn(name = "song_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "phrases_id", referencedColumnName = "id"))
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "songActivity")
     @Fetch(FetchMode.SUBSELECT)
-    private List<Phrase> phrases;
+    private List<WordActivity> wordActivities;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "songActivity")
+    @Fetch(FetchMode.SUBSELECT)
+    private List<PhraseActivity> phraseActivities;
 
 }

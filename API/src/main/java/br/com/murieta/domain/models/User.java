@@ -28,6 +28,10 @@ public class User implements UserDetails {
     private Boolean CredentialsNonExpired;
     private Boolean Enabled;
 
+    @OneToOne
+    @JoinColumn(name = "conections_id", referencedColumnName = "id")
+    private Connections connections;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),

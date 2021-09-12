@@ -33,5 +33,14 @@ public class SongController {
             return ResponseEntity.badRequest().body(ex.getMessage());
         }
     }
+
+    @PostMapping("/link")
+    public ResponseEntity<Object> link(@RequestBody String songId) {
+        try {
+            return ResponseEntity.ok(songService.link(songId));
+        } catch (Exception ex) {
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
+    }
 }
 

@@ -1,8 +1,8 @@
 package br.com.murieta.data.repositories;
 
-import br.com.murieta.domain.models.Connections;
 import br.com.murieta.domain.models.SongActivity;
+import br.com.murieta.domain.models.Study;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SongActivityRepository extends JpaRepository<SongActivity, Integer> {
+public interface StudyRepository extends JpaRepository<Study, Integer> {
 }

@@ -1,13 +1,11 @@
 package br.com.murieta.domain.servicesImpl;
 
-import br.com.murieta.data.repositories.PhraseRepository;
-import br.com.murieta.data.repositories.SongRepository;
-import br.com.murieta.data.repositories.WordRepository;
-import br.com.murieta.domain.models.Phrase;
-import br.com.murieta.domain.models.Song;
-import br.com.murieta.domain.models.Word;
+import br.com.murieta.data.repositories.*;
+import br.com.murieta.domain.models.*;
 import br.com.murieta.domain.service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -23,6 +21,15 @@ public class SongServiceImpl implements SongService {
 
     @Autowired
     private PhraseRepository phraseRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private ConnectionsRepository connectionsRepository;
+
+    @Autowired
+    private SongActivityRepository songActivityRepository;
 
     @Override
     public Song create(String vagalumeId, String lyric) {
@@ -118,6 +125,26 @@ public class SongServiceImpl implements SongService {
             return fndSong;
 
         throw new IllegalArgumentException("Nenhum musica foi localizada.");
+    }
+
+    @Override
+    public SongActivity link(String songId) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = (User) authentication.getPrincipal();
+        currentUser = userRepository.findById(currentUser.getId()).get();
+
+        Song song = getSong(songId);
+
+        SongActivity fndsongActivity = songActivityRepository.findByConnections_IdAndSong_Id(currentUser.getConnections().getId(), song.getId());
+
+        if (fndsongActivity != null)
+            return fndsongActivity;
+
+        SongActivity songActivity = new SongActivity();
+        songActivity.setSong(song);
+        songActivity.setConnections(currentUser.getConnections());
+
+        return songActivityRepository.save(songActivity);
     }
 
 

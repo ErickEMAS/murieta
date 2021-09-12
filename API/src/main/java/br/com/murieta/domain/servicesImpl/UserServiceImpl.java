@@ -1,6 +1,8 @@
 package br.com.murieta.domain.servicesImpl;
 
+import br.com.murieta.data.repositories.ConnectionsRepository;
 import br.com.murieta.domain.dto.SignUpDTO;
+import br.com.murieta.domain.models.Connections;
 import br.com.murieta.domain.service.UserService;
 import br.com.murieta.data.repositories.RoleRepository;
 import br.com.murieta.data.repositories.UserRepository;
@@ -22,6 +24,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private ConnectionsRepository connectionsRepository;
 
     @Override
     public User signUp(SignUpDTO signUpDTO) {
@@ -53,6 +58,9 @@ public class UserServiceImpl implements UserService {
         Set<Role> roles = new HashSet<>();
         roles.add(role);
 
+        Connections connections = new Connections();
+        connections = connectionsRepository.save(connections);
+
         User user = new User();
         user.setEmail(signUpDTO.getEmail());
         user.setName(signUpDTO.getNome());
@@ -62,6 +70,7 @@ public class UserServiceImpl implements UserService {
         user.setCredentialsNonExpired(true);
         user.setEnabled(true);
         user.setRoles(roles);
+        user.setConnections(connections);
 
         return userRepository.save(user);
     }

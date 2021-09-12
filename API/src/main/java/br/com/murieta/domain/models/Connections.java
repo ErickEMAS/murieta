@@ -1,26 +1,23 @@
 package br.com.murieta.domain.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @Entity
-public class Song {
+public class Connections {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String vagalumeId;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "connections")
+    @Fetch(FetchMode.SUBSELECT)
+    private List<SongActivity> songActivities;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "song_word",

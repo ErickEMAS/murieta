@@ -1,5 +1,6 @@
 package br.com.murieta.domain.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -9,18 +10,26 @@ import java.util.List;
 
 @Data
 @Entity
-public class WordActivity {
+public class PhraseActivity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "wordactivity")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "phraseactivity_phrase",
+            joinColumns = @JoinColumn(name = "phraseactivity_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "phrase_id", referencedColumnName = "id"))
     @Fetch(FetchMode.SUBSELECT)
-    private List<Word> words;
+    private List<Phrase> phrases;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "wordactivity")
-    @Fetch(FetchMode.SUBSELECT)
-    private List<Study> studies;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "phrase_id")
+    private Phrase phrase;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "songactivity_id")
+    private SongActivity songActivity;
 
 }

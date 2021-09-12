@@ -1,11 +1,9 @@
 package br.com.murieta.domain.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -16,5 +14,4 @@ public class Phrase {
     private Integer id;
 
     private String phrase;
-
 }

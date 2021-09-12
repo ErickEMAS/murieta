@@ -1,7 +1,9 @@
 package br.com.murieta.core.seeders;
 
+import br.com.murieta.data.repositories.ConnectionsRepository;
 import br.com.murieta.data.repositories.RoleRepository;
 import br.com.murieta.data.repositories.UserRepository;
+import br.com.murieta.domain.models.Connections;
 import br.com.murieta.domain.models.Role;
 import br.com.murieta.domain.models.User;
 import lombok.extern.slf4j.Slf4j;
@@ -19,18 +21,20 @@ import java.util.Set;
 public class InitSeeder {
     private static RoleRepository roleRepository;
     private static UserRepository userRepository;
+    private static ConnectionsRepository connectionsRepository;
 
-    private User userAdmin;
     private Role roleAdmin;
     private Role roleUser;
 
     @Autowired
     public InitSeeder(
             RoleRepository _roleRepository,
-            UserRepository _userRepository
+            UserRepository _userRepository,
+            ConnectionsRepository _connectionRepository
     ) {
         this.roleRepository = _roleRepository;
         this.userRepository = _userRepository;
+        this.connectionsRepository = _connectionRepository;
     }
 
     @EventListener
@@ -75,6 +79,10 @@ public class InitSeeder {
         Set<Role> setRoles = new HashSet<>();
         setRoles.add(roleAdmin);
         user.setRoles(setRoles);
+
+        Connections connections = new Connections();
+        connections = connectionsRepository.save(connections);
+        user.setConnections(connections);
 
         userRepository.save(user);
 
