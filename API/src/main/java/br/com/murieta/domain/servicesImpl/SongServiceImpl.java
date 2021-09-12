@@ -105,4 +105,20 @@ public class SongServiceImpl implements SongService {
         return songRepository.save(newSong);
     }
 
+    @Override
+    public Song getSong(String id) {
+        Song fndSong = songRepository.findByVagalumeId(id);
+
+        if (fndSong != null)
+            return fndSong;
+
+        fndSong = songRepository.findById(Integer.parseInt(id)).get();
+
+        if (fndSong != null)
+            return fndSong;
+
+        throw new IllegalArgumentException("Nenhum musica foi localizada.");
+    }
+
+
 }
