@@ -4,9 +4,8 @@ import br.com.murieta.domain.models.User;
 import lombok.Data;
 
 @Data
-public class SongDTO {
+public class TextDTO {
 
-    private String vagalumeId;
     private String lyric;
 
 }

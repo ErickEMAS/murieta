@@ -1,25 +1,21 @@
 package br.com.murieta.application.controllers;
 
-import br.com.murieta.domain.dto.SignUpDTO;
-import br.com.murieta.domain.dto.SongDTO;
-import br.com.murieta.domain.models.User;
-import br.com.murieta.domain.service.SongService;
-import br.com.murieta.domain.service.UserService;
+import br.com.murieta.domain.service.TextService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/song")
-public class SongController {
+public class TextController {
 
     @Autowired
-    private SongService songService;
+    private TextService songService;
 
     @PostMapping("/insert")
-    public ResponseEntity<Object> insert(@RequestBody SongDTO songDTO) {
+    public ResponseEntity<Object> insert(@RequestBody String text) {
         try {
-            return ResponseEntity.ok(songService.create(songDTO.getVagalumeId(), songDTO.getLyric()));
+            return ResponseEntity.ok(songService.create(text));
         } catch (Exception ex) {
             return ResponseEntity.badRequest().body(ex.getMessage());
         }

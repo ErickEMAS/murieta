@@ -17,18 +17,18 @@ public class Connections {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "connections")
     @Fetch(FetchMode.SUBSELECT)
-    private List<SongActivity> songActivities;
+    private List<TextActivity> songActivities;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "song_word",
-            joinColumns = @JoinColumn(name = "song_id", referencedColumnName = "id"),
+    @JoinTable(name = "text_word",
+            joinColumns = @JoinColumn(name = "text_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "word_id", referencedColumnName = "id"))
     @Fetch(FetchMode.SUBSELECT)
     private List<Word> words;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "song_phrases",
-            joinColumns = @JoinColumn(name = "song_id", referencedColumnName = "id"),
+    @JoinTable(name = "text_phrases",
+            joinColumns = @JoinColumn(name = "text_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "phrases_id", referencedColumnName = "id"))
     @Fetch(FetchMode.SUBSELECT)
     private List<Phrase> phrases;

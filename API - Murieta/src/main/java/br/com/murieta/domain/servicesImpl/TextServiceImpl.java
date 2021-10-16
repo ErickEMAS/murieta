@@ -2,19 +2,20 @@ package br.com.murieta.domain.servicesImpl;
 
 import br.com.murieta.data.repositories.*;
 import br.com.murieta.domain.models.*;
-import br.com.murieta.domain.service.SongService;
+import br.com.murieta.domain.service.TextService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
-public class SongServiceImpl implements SongService {
+public class TextServiceImpl implements TextService {
 
     @Autowired
-    private SongRepository songRepository;
+    private TextRepository textRepository;
 
     @Autowired
     private WordRepository wordRepository;
@@ -29,17 +30,21 @@ public class SongServiceImpl implements SongService {
     private ConnectionsRepository connectionsRepository;
 
     @Autowired
-    private SongActivityRepository songActivityRepository;
+    private TextActivityRepository textActivityRepository;
+
+    @Autowired
+    private CardRepository cardRepository;
 
     @Override
-    public Song create(String vagalumeId, String lyric) {
-        Song fndSong = songRepository.findByVagalumeId(vagalumeId);
+    public Text create(String lyric) {
+        Text newText = new Text();
+        newText.setTitle("teste");
+        newText = textRepository.save(newText);
 
-        if (fndSong != null)
-            return fndSong;
+        final int textId = newText.getId();
 
-        List<Phrase> phraseList = new ArrayList<>();
-        List<Word> wordList = new ArrayList<>();
+        List<Card> phraseCards = new ArrayList<>();
+        List<Card> wordCards = new ArrayList<>();
 
         String text = lyric.replaceAll("[^a-zA-Z']", " ").toLowerCase();
         List<String> stringList = new ArrayList<String>(Arrays.asList(text.split(" ")));
@@ -56,11 +61,22 @@ public class SongServiceImpl implements SongService {
                 if (fndWord == null) {
                     Word newWord = new Word();
                     newWord.setWord(string);
-
-                    wordList.add(wordRepository.save(newWord));
-                } else {
-                    wordList.add(fndWord);
+                    fndWord = wordRepository.save(newWord);
                 }
+
+                Text textN = new Text();
+                textN.setId(textId);
+
+                Card newCard = new Card();
+
+                newCard.setMultiplier(-1);
+                newCard.setType("word");
+                newCard.setLibertyDate(LocalDateTime.now());
+                newCard.setWord(fndWord);
+                newCard.setText(textN);
+                cardRepository.save(newCard);
+
+                wordCards.add(newCard);
 
 
             }
@@ -75,13 +91,13 @@ public class SongServiceImpl implements SongService {
             }
         }
 
-        stringList.forEach(string -> {
-            if (string.startsWith(" ")) {
-                Phrase newPhrase = new Phrase();
-                newPhrase.setPhrase(string);
-                phraseList.add(newPhrase);
-            }
-        });
+//        stringList.forEach(string -> {
+//            if (string.startsWith(" ")) {
+//                Phrase newPhrase = new Phrase();
+//                newPhrase.setPhrase(string);
+//                phraseList.add(newPhrase);
+//            }
+//        });
 
         set = new HashSet<>(stringList);
         stringList.clear();
@@ -95,31 +111,35 @@ public class SongServiceImpl implements SongService {
                 if (fndPhrase == null) {
                     Phrase newPhrase = new Phrase();
                     newPhrase.setPhrase(string);
-
-                    phraseList.add(phraseRepository.save(newPhrase));
-                } else {
-                    phraseList.add(fndPhrase);
+                    fndPhrase = phraseRepository.save(newPhrase);
                 }
+
+                Text textN = new Text();
+                textN.setId(textId);
+
+                Card newCard = new Card();
+
+                newCard.setMultiplier(-1);
+                newCard.setType("phrase");
+                newCard.setLibertyDate(LocalDateTime.now());
+                newCard.setPhrase(fndPhrase);
+                newCard.setText(textN);
+                cardRepository.save(newCard);
+
+                phraseCards.add(newCard);
+
             }
         });
 
-        Song newSong = new Song();
+        newText.setWordCards(wordCards);
+        newText.setPhraseCards(phraseCards);
 
-        newSong.setVagalumeId(vagalumeId);
-        newSong.setWords(wordList);
-        newSong.setPhrases(phraseList);
-
-        return songRepository.save(newSong);
+        return textRepository.save(newText);
     }
 
     @Override
-    public Song getSong(String id) {
-        Song fndSong = songRepository.findByVagalumeId(id);
-
-        if (fndSong != null)
-            return fndSong;
-
-        fndSong = songRepository.findById(Integer.parseInt(id)).get();
+    public Text getSong(String id) {
+        Text fndSong = textRepository.findById(Integer.parseInt(id)).get();
 
         if (fndSong != null)
             return fndSong;
@@ -128,23 +148,23 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
-    public SongActivity link(String songId) {
+    public TextActivity link(String songId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User currentUser = (User) authentication.getPrincipal();
         currentUser = userRepository.findById(currentUser.getId()).get();
 
-        Song song = getSong(songId);
+        Text song = getSong(songId);
 
-        SongActivity fndsongActivity = songActivityRepository.findByConnections_IdAndSong_Id(currentUser.getConnections().getId(), song.getId());
+        TextActivity fndsongActivity = textActivityRepository.findByConnections_IdAndText_Id(currentUser.getConnections().getId(), song.getId());
 
         if (fndsongActivity != null)
             return fndsongActivity;
 
-        SongActivity songActivity = new SongActivity();
-        songActivity.setSong(song);
+        TextActivity songActivity = new TextActivity();
+        songActivity.setText(song);
         songActivity.setConnections(currentUser.getConnections());
 
-        return songActivityRepository.save(songActivity);
+        return textActivityRepository.save(songActivity);
     }
 
 

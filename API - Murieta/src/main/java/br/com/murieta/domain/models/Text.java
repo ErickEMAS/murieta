@@ -14,26 +14,35 @@ import java.util.Set;
 
 @Data
 @Entity
-public class Song {
+public class Text {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String vagalumeId;
+    private String title;
+
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "song_word",
-            joinColumns = @JoinColumn(name = "song_id", referencedColumnName = "id"),
+    @JoinTable(name = "text_word",
+            joinColumns = @JoinColumn(name = "text_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "word_id", referencedColumnName = "id"))
     @Fetch(FetchMode.SUBSELECT)
     private List<Word> words;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "song_phrases",
-            joinColumns = @JoinColumn(name = "song_id", referencedColumnName = "id"),
+    @JoinTable(name = "text_phrases",
+            joinColumns = @JoinColumn(name = "text_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "phrases_id", referencedColumnName = "id"))
     @Fetch(FetchMode.SUBSELECT)
     private List<Phrase> phrases;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "text")
+    @Fetch(FetchMode.SUBSELECT)
+    private List<Card> wordCards;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "text")
+    @Fetch(FetchMode.SUBSELECT)
+    private List<Card> phraseCards;
 
 }

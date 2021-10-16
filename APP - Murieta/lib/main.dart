@@ -1,7 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:murieta/pages/login_page.dart';
-import 'package:murieta/pages/splash.dart';
+import 'package:murieta/themes/app_colors.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         duration: 2000,
         splash: Image.asset("assets/logo.png"),
         nextScreen: LoginPage(),
-        backgroundColor: Colors.purple,
+        backgroundColor: AppColors.primary,
         splashTransition: SplashTransition.fadeTransition,
         ),
     );

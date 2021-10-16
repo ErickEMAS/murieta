@@ -10,7 +10,7 @@ import java.util.List;
 
 @Data
 @Entity
-public class SongActivity {
+public class TextActivity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,14 +22,14 @@ public class SongActivity {
     private Connections connections;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "song_id")
-    private Song song;
+    @JoinColumn(name = "text_id")
+    private Text text;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "songActivity")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "textActivity")
     @Fetch(FetchMode.SUBSELECT)
     private List<WordActivity> wordActivities;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "songActivity")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "textActivity")
     @Fetch(FetchMode.SUBSELECT)
     private List<PhraseActivity> phraseActivities;
 

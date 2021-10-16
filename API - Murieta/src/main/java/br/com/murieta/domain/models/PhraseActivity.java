@@ -29,7 +29,7 @@ public class PhraseActivity {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "songactivity_id")
-    private SongActivity songActivity;
+    @JoinColumn(name = "textactivity_id")
+    private TextActivity textActivity;
 
 }
