@@ -11,23 +11,19 @@ import java.util.List;
 
 @Data
 @Entity
-public class Card {
+public class CardWord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String type;
     private Integer multiplier;
     private LocalDateTime libertyDate;
+    private String back;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "word_id")
     private Word word;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "phrase_id")
-    private Phrase phrase;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)

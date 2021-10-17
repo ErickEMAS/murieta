@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 public class TextDTO {
 
-    private String lyric;
+    private String title;
+    private String text;
 
 }
