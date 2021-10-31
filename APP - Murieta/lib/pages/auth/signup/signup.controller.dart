@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
-import 'package:murieta/model/auth/Login.dart';
+import 'package:murieta/model/auth/SignUp.dart';
 import 'package:murieta/themes/app_icon.dart';
 
-part 'login.controller.g.dart';
+part 'signup.controller.g.dart';
 
-class LoginController = _LoginControllerBase with _$LoginController;
+class SignupController = _SignupControllerBase with _$SignupController;
 
-abstract class _LoginControllerBase with Store {
+abstract class _SignupControllerBase with Store {
 
   @observable
   bool isLoading = false;
@@ -25,7 +25,13 @@ abstract class _LoginControllerBase with Store {
   Icon passwordIcon = AppIcons.visibilityOff;
 
   @observable
-  Login login = Login();
+  bool passwordConfirmHidden = true;
+
+  @observable
+  Icon passwordConfirmIcon = AppIcons.visibilityOff;
+
+  @observable
+  SignUp signUp = SignUp();
   
   @action
   setLoading(bool value) => isLoading = value;
@@ -40,6 +46,16 @@ abstract class _LoginControllerBase with Store {
       passwordIcon = AppIcons.visibilityOff;
     } else {
       passwordIcon = AppIcons.visibilityOn;
+    }
+  }
+
+  @action
+  changeShowPasswordConfirm({required BuildContext context}){
+    passwordConfirmHidden = !passwordConfirmHidden;
+    if (passwordConfirmHidden) {
+      passwordConfirmIcon = AppIcons.visibilityOff;
+    } else {
+      passwordConfirmIcon = AppIcons.visibilityOn;
     }
   }
 

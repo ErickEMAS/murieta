@@ -5,27 +5,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:murieta/custom_widgets/app_button.widget.dart';
 import 'package:murieta/custom_widgets/app_input.dart';
-import 'package:murieta/pages/auth/login/login.controller.dart';
-import 'package:murieta/pages/auth/signup/signup_page.dart';
+import 'package:murieta/pages/auth/forgot_password/forgot.password.change.page.dart';
+import 'package:murieta/pages/auth/forgot_password/forgot.password.controller.dart';
+import 'package:murieta/pages/auth/login/login.page.dart';
+import 'package:murieta/pages/auth/signup/signup.page.dart';
 import 'package:murieta/themes/app_colors.dart';
 import 'package:murieta/themes/app_icon.dart';
 
-class LoginPage extends StatefulWidget {
+class ForgotPasswordCodePage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _ForgotPasswordCodePageState createState() => _ForgotPasswordCodePageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  final loginController = new LoginController();
+class _ForgotPasswordCodePageState extends State<ForgotPasswordCodePage> {
+  final forgotPasswordController = new ForgotPasswordController();
   var _formKey = GlobalKey<FormState>();
-  FocusNode password = FocusNode();
-
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
-
     return Scaffold(
       body: Form(
         key: _formKey,
@@ -62,39 +60,43 @@ class _LoginPageState extends State<LoginPage> {
                     Column(
                       children: [
                         Observer(builder: (_) => AppInput(
-                          nextFocus: password,
-                          hintText: "E-mail", 
-                          value: loginController.login.email,
-                          onChange: (value) => loginController.login.email = value,
-                          suffixIcon: AppIcons.email,),
-                        ),
-                        SizedBox(height: 16),
-                        Observer(builder: (_) => AppInput(
-                          focusNode: password,
-                          hintText: "Senha",
-                          value: loginController.login.password,
-                          onChange: (value) => loginController.login.password = value,
-                          obscureText: loginController.passwordHidden,
-                          suffixIcon: loginController.passwordIcon,
-                          suffixFunction: () => loginController.changeShowPassword(context: context)),
+                          hintText: "Código",
+                          value: forgotPasswordController.code,
+                          onChange: (value) => forgotPasswordController.code = value,
+                          suffixIcon: AppIcons.code),
                         ),
                         SizedBox(height: 12),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text("Esqueceu a senha?"),
+                            Container(
+                              width: size.width * 0.8,
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Text("Verifique seu e-mail e informe o código enviado",
+                                      textAlign: TextAlign.end,
+                                      style: TextStyle(
+                                        fontSize: 14
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
                         )
                       ],
                     ),
-                    AppButton(text: "Login", onPressed: (){
-                      print(loginController.login.email);
-                      print(loginController.login.password);
-                    }),
-                    Text(
-                      "Cadastrar-se",
-                      style: TextStyle(
-                        color: AppColors.secondary,
+                    AppButton(text: "Confirmar", onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => ForgotPasswordChangePage()))),
+                    GestureDetector(
+                      onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => LoginPage())),
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                          color: AppColors.secondary,
+                          fontSize: 18
+                        ),
                       ),
                     ),
                   ],
