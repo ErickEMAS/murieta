@@ -14,13 +14,13 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width  ?? MediaQuery.of(context).size.width,
-      height: height ?? 45,
+      height: height ?? 56,
       child: ElevatedButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(AppColors.primary),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(10),
               side: BorderSide(
                 color: AppColors.primary,
               ),
@@ -37,7 +37,7 @@ class AppButton extends StatelessWidget {
             child: Text(
               text,
               style: TextStyle(
-                color: AppColors.white,
+                color: AppColors.primary100,
                 fontSize: fontSize ?? 18,
               ),
             ),
