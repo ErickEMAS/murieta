@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:murieta/pages/Splash/splash.controller.dart';
+import 'package:murieta/themes/app_colors.dart';
+import 'package:murieta/themes/app_icon.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -8,7 +10,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   final splashController = new SplashController();
-  
+
   @override
   void initState() {
     super.initState();
@@ -21,10 +23,22 @@ class _SplashScreenState extends State<SplashScreen> {
       body: SafeArea(
         child: Center(
           child: Container(
-            child: Image.asset(
-              "assets/logo.png",
-              width: MediaQuery.of(context).size.width / 2,
-              fit: BoxFit.contain,),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  AppIcons.logo.icon,
+                  color: AppColors.primary,
+                  size: 112,
+                ),
+                Text(
+                  "Murieta",
+                  style: TextStyle(
+                    fontSize: 64
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

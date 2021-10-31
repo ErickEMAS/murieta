@@ -35,19 +35,26 @@ class _LoginPageState extends State<LoginPage> {
       body: Form(
         key: _formKey,
         child: Container(
-          color: AppColors.background,
           child: Column(
             children: [
               Container(
                 width: size.width,
                 height: size.height * 0.45,
-                child: Center(
-                  child: Container(
-                    child: Image.asset(
-                      "assets/logo.png",
-                      width: MediaQuery.of(context).size.width / 2,
-                      fit: BoxFit.contain,),
-                  ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      AppIcons.logo.icon,
+                      color: AppColors.primary,
+                      size: 112,
+                    ),
+                    Text(
+                      "Murieta",
+                      style: TextStyle(
+                        fontSize: 64
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Container(
