@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:murieta/themes/app_colors.dart';
+import 'package:murieta/themes/app_dimensions.dart';
 
 class AppButton extends StatelessWidget {
   String text;
@@ -13,8 +14,9 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width  ?? MediaQuery.of(context).size.width,
+      width: width  ?? appWidth(context: context),
       height: height ?? 56,
+      margin: EdgeInsets.only(top: 16, bottom: 16),
       child: ElevatedButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(AppColors.primary),

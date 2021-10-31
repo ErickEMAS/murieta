@@ -33,5 +33,5 @@ ThemeData DarkMode() {
         buttonColor: AppColors.primary,
         disabledColor: AppColors.background
     ),
-);
+  );
 }

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:murieta/themes/app_colors.dart';
+import 'package:murieta/themes/app_dimensions.dart';
 
 class AppInput extends StatelessWidget {
   bool obscureText;
@@ -46,16 +47,19 @@ class AppInput extends StatelessWidget {
       }
     }
     return Container(
-      width: size.width - 32,
+      width: appWidth(context: context) -32,
+      margin: EdgeInsets.only(top: 16),
+      height: 56,
       decoration: BoxDecoration(
         color: AppColors.background01dp,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            height: 52,
-            width: size.width - 72,
+            height: 56,
+            width: appWidth(context: context) - 72,
             child: TextFormField(
               onChanged: (data) {
                 onChange(data);
