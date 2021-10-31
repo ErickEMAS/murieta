@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
+import 'package:murieta/model/auth/Login.dart';
 import 'package:murieta/themes/app_icon.dart';
 
 part 'login.controller.g.dart';
@@ -21,7 +22,10 @@ abstract class _LoginControllerBase with Store {
   bool passwordHidden = true;
 
   @observable
-  Icon passwordIcon = AppIcons.visibilityOn;
+  Icon passwordIcon = AppIcons.visibilityOff;
+
+  @observable
+  Login login = Login();
   
   @action
   setLoading(bool value) => isLoading = value;

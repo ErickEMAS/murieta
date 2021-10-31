@@ -11,7 +11,7 @@ class AppInput extends StatelessWidget {
   FormFieldValidator<String>? validator;
   TextInputType? keyboardType;
   TextInputAction? textInputAction;
-  FocusNode focusNode;
+  FocusNode? focusNode;
   FocusNode? nextFocus;
   Function(dynamic) onChange;
   Widget? suffixIcon;
@@ -27,7 +27,7 @@ class AppInput extends StatelessWidget {
       this.validator,
       this.keyboardType,
       this.textInputAction,
-      required this.focusNode,
+      this.focusNode,
       this.nextFocus,
       this.suffixIcon,
       this.suffixFunction,
@@ -57,6 +57,9 @@ class AppInput extends StatelessWidget {
             height: 52,
             width: size.width - 72,
             child: TextFormField(
+              onChanged: (data) {
+                onChange(data);
+              },
               controller: textEditingController,
               obscureText: obscureText,
               validator: validator,

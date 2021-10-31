@@ -85,6 +85,21 @@ mixin _$LoginController on _LoginControllerBase, Store {
     });
   }
 
+  final _$loginAtom = Atom(name: '_LoginControllerBase.login');
+
+  @override
+  Login get login {
+    _$loginAtom.reportRead();
+    return super.login;
+  }
+
+  @override
+  set login(Login value) {
+    _$loginAtom.reportWrite(value, super.login, () {
+      super.login = value;
+    });
+  }
+
   final _$_LoginControllerBaseActionController =
       ActionController(name: '_LoginControllerBase');
 
@@ -128,7 +143,8 @@ isLoading: ${isLoading},
 isLogged: ${isLogged},
 errorMessage: ${errorMessage},
 passwordHidden: ${passwordHidden},
-passwordIcon: ${passwordIcon}
+passwordIcon: ${passwordIcon},
+login: ${login}
     ''';
   }
 }

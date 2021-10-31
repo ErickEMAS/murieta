@@ -18,18 +18,13 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final loginController = new LoginController();
   var _formKey = GlobalKey<FormState>();
+  FocusNode password = FocusNode();
 
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    FocusNode login = FocusNode();
-    FocusNode senha = FocusNode();
 
     return Scaffold(
       body: Form(
@@ -67,18 +62,18 @@ class _LoginPageState extends State<LoginPage> {
                     Column(
                       children: [
                         Observer(builder: (_) => AppInput(
-                          focusNode: senha,
-                          hintText: "Senha", 
-                          onChange: (a) {  },
-                          obscureText: loginController.passwordHidden,
-                          suffixIcon: loginController.passwordIcon,
-                          suffixFunction: () => loginController.changeShowPassword(context: context)),
+                          nextFocus: password,
+                          hintText: "E-mail", 
+                          value: loginController.login.email,
+                          onChange: (value) => loginController.login.email = value,
+                          suffixIcon: AppIcons.email,),
                         ),
                         SizedBox(height: 16),
                         Observer(builder: (_) => AppInput(
-                          focusNode: senha,
-                          hintText: "Senha", 
-                          onChange: (a) {  },
+                          focusNode: password,
+                          hintText: "Senha",
+                          value: loginController.login.password,
+                          onChange: (value) => loginController.login.password = value,
                           obscureText: loginController.passwordHidden,
                           suffixIcon: loginController.passwordIcon,
                           suffixFunction: () => loginController.changeShowPassword(context: context)),
@@ -92,11 +87,14 @@ class _LoginPageState extends State<LoginPage> {
                         )
                       ],
                     ),
-                    AppButton(text: "Login", onPressed: (){}),
+                    AppButton(text: "Login", onPressed: (){
+                      print(loginController.login.email);
+                      print(loginController.login.password);
+                    }),
                     Text(
                       "Cadastrar-se",
                       style: TextStyle(
-                        color: AppColors.primary,
+                        color: AppColors.secondary,
                       ),
                     ),
                   ],
