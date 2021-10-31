@@ -4,15 +4,15 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:murieta/custom_widgets/app_button.widget.dart';
 import 'package:murieta/custom_widgets/app_input.dart';
-import 'package:murieta/pages/signup_page.dart';
+import 'package:murieta/pages/auth/login/login_page.dart';
 import 'package:murieta/themes/app_colors.dart';
 
-class LoginPage extends StatefulWidget {
+class SignupPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignupPageState createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupPageState extends State<SignupPage> {
 
   var _formKey = GlobalKey<FormState>();
 
@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
               decoration: BoxDecoration(
                 color: AppColors.primary, 
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(100),
+                  bottomRight: Radius.circular(100),
                 ),
               ),
               child: Column(
@@ -54,11 +54,11 @@ class _LoginPageState extends State<LoginPage> {
                     ), 
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(16),
-                        child: Text("Login",
+                        child: Text("Sign-up",
                           style: TextStyle(fontSize: 32),),
                       ),
                     ],
@@ -71,28 +71,19 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   Container(
                     padding: EdgeInsets.all(16),
-                    child: AppInput(hintText: "E-mail", onChange: (a) {  },),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(16),
-                    child: AppInput(hintText: "Senha", onChange: (a) {  },),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(16),
-                    child: AppButton(text: "Login", onPressed: () {},),
+                    child: AppButton(text: "Cadastrar-se", onPressed: () {},),
                   ),
                   Container(
                     padding: EdgeInsets.all(16),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Não pussui uma conta?"),
+                        Text("Já pussui uma conta?"),
                         SizedBox(width: 8,),
                         GestureDetector(
-                          child: Text("Cadastre-se?",
+                          child: Text("Acessar",
                             style: TextStyle(color: AppColors.secondary),),
-                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SignupPage()),
-                      ),),
+                          onTap: () => Navigator.pop(context)),
                       ],
                     ),
                   ),

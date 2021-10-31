@@ -288,7 +288,7 @@ public class TextServiceImpl implements TextService {
         if (answer){
             if (multiplier < 1) return multiplier;
             if (multiplier == 1) return 0;
-            if (multiplier > 1) return multiplier / 2;
+            if (multiplier > 1) return 1;
         }
         return multiplier;
     }

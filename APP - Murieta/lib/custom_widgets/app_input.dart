@@ -11,16 +11,15 @@ class AppInput extends StatelessWidget {
   FormFieldValidator<String>? validator;
   TextInputType? keyboardType;
   TextInputAction? textInputAction;
-  FocusNode? focusNode;
+  FocusNode focusNode;
   FocusNode? nextFocus;
   Function(dynamic) onChange;
-  Function? onTap;
-  List<TextInputFormatter>? inputFormatters;
+  Widget? suffixIcon;
+  Function? suffixFunction;
 
   AppInput(
     {
       required this.onChange,
-      this.onTap,
       required this.hintText,
       this.value,
       this.obscureText = false,
@@ -28,24 +27,68 @@ class AppInput extends StatelessWidget {
       this.validator,
       this.keyboardType,
       this.textInputAction,
-      this.focusNode,
+      required this.focusNode,
       this.nextFocus,
-      this.inputFormatters,
+      this.suffixIcon,
+      this.suffixFunction,
     }
   );
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: hintText,
-        focusColor: AppColors.primary,
-        contentPadding: EdgeInsets.all(16),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20)
-        ),
-        errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.red, width: 20))),
+    Size size = MediaQuery.of(context).size;
+    if (textEditingController == null){
+      textEditingController = new TextEditingController();
+
+      if (value != null) {
+        textEditingController!.text = value!;
+        textEditingController!.selection = TextSelection.fromPosition(TextPosition(offset: textEditingController!.text.length));
+      }
+    }
+    return Container(
+      width: size.width - 32,
+      decoration: BoxDecoration(
+        color: AppColors.background01dp,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        children: [
+          Container(
+            height: 52,
+            width: size.width - 72,
+            child: TextFormField(
+              controller: textEditingController,
+              obscureText: obscureText,
+              validator: validator,
+              keyboardType: keyboardType,
+              focusNode: focusNode,
+              decoration: InputDecoration(
+                labelText: hintText,
+                contentPadding: EdgeInsets.all(16),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide.none,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide.none,
+                ),
+                errorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.red, width: 20))),
+            ),
+          ),
+          Container(
+            width: 40,
+            padding: EdgeInsets.fromLTRB(0, 16, 16, 16),
+            child: Center(
+              child: GestureDetector(
+                child: suffixIcon,
+                onTap: () => suffixFunction == null ? {} : suffixFunction!(),
+              ),
+            )
+          ),
+        ],
+      ),
     );
   }
 }

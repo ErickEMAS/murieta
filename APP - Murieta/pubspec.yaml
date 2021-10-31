@@ -23,12 +23,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  animated_splash_screen: ^1.1.0
   cupertino_icons: ^1.0.2
+  dio:
+  mobx:
+  flutter_mobx:
+  flutter_modular: ^4.1.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
+  mobx_codegen:
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
