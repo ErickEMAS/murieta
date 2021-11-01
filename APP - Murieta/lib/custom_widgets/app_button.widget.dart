@@ -7,7 +7,7 @@ class AppButton extends StatelessWidget {
   double? width;
   double? height;
   double? fontSize;
-  var onPressed;
+  Function onPressed;
 
   AppButton({required this.text, required this.onPressed, this.width, this.height, this.fontSize});
 

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:murieta/custom_widgets/app_button.widget.dart';
 import 'package:murieta/custom_widgets/app_input.dart';
+import 'package:murieta/pages/auth/dashboard/dash.page.dart';
 import 'package:murieta/pages/auth/forgot_password/forgot.password.email.page.dart';
 import 'package:murieta/pages/auth/login/login.controller.dart';
 import 'package:murieta/pages/auth/signup/signup.page.dart';
@@ -88,10 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                                             )
                                           ],
                                         ),
-                                        AppButton(text: "Login", onPressed: (){
-                                          print(loginController.login.email);
-                                          print(loginController.login.password);
-                                        }),
+                                        AppButton(text: "Login", onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => DashboardPage()))),
                                         GestureDetector(
                                           onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => SignUpPage())),
                                           child: Text(

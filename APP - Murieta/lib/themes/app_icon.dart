@@ -10,4 +10,14 @@ class AppIcons {
   static final visibilityOff = Icon(Icons.visibility_off);
   static final person = Icon(Icons.person);
   static final code = Icon(Icons.vpn_key);
+
+  //AppBar
+  static final settings = Icon(Icons.settings);
+
+  //Dashboard
+  static final week = Icon(Icons.date_range);
+  static final word = Icon(Icons.font_download);
+  static final phrase = Icon(Icons.subject);
+  static final deck = Icon(Icons.style);
+
 }
