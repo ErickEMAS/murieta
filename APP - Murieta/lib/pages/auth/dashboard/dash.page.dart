@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:murieta/custom_widgets/app_box_button.dart';
 import 'package:murieta/custom_widgets/app_scaffold.dart';
 import 'package:murieta/custom_widgets/dasboard/graphic_item.dart';
+import 'package:murieta/pages/auth/settings/settings.page.dart';
 import 'package:murieta/themes/app_colors.dart';
 import 'package:murieta/themes/app_dimensions.dart';
 import 'package:murieta/themes/app_icon.dart';
@@ -25,8 +26,11 @@ class _DashboardPageState extends State<DashboardPage> {
   print("teste Heigth: $height");
     return AppScaffold(
       appBarText: "Murieta",
-      appBarIcon: AppIcons.logo.icon,
-      appBarSuffixIcon: AppIcons.settings,
+      appBarIcon: AppIcons.logo,
+      appBarSuffixIcon: GestureDetector(
+        onTap:  () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SettingsPage())),
+        child: Icon(AppIcons.settings),
+      ),
       body: Align(
         alignment: Alignment.topCenter,
         child: Container(
@@ -164,7 +168,7 @@ class _DashboardPageState extends State<DashboardPage> {
                             content: Column(
                               children: [
                                 Icon(
-                                  AppIcons.word.icon,
+                                  AppIcons.word,
                                   color: AppColors.white,
                                   size: appIconDashPage(context: context),
                                 ),
@@ -186,7 +190,7 @@ class _DashboardPageState extends State<DashboardPage> {
                             content: Column(
                               children: [
                                 Icon(
-                                  AppIcons.phrase.icon,
+                                  AppIcons.phrase,
                                   size: appIconDashPage(context: context),
                                 ),
                                 Text("Minhas frases",
@@ -213,7 +217,7 @@ class _DashboardPageState extends State<DashboardPage> {
                             child: Transform.rotate(
                               angle: 180 * math.pi / 180,
                               child: Icon(
-                                AppIcons.deck.icon,
+                                AppIcons.deck,
                                 size: appIconDashPage(context: context),
                                 color: AppColors.primary100,
                               ),

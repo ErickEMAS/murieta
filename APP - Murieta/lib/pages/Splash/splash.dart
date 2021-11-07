@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:murieta/pages/Splash/splash.controller.dart';
 import 'package:murieta/themes/app_colors.dart';
+import 'package:murieta/themes/app_dimensions.dart';
 import 'package:murieta/themes/app_icon.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -27,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  AppIcons.logo.icon,
+                  AppIcons.logo,
                   color: AppColors.primary,
                   size: 112,
                 ),

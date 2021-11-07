@@ -8,7 +8,7 @@ Widget logo({required BuildContext context}) {
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Icon(
-        AppIcons.logo.icon,
+        AppIcons.logo,
         color: AppColors.primary,
         size: appSizeIconLogo(context: context),
       ),

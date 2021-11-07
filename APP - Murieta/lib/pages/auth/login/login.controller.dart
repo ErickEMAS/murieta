@@ -22,7 +22,7 @@ abstract class _LoginControllerBase with Store {
   bool passwordHidden = true;
 
   @observable
-  Icon passwordIcon = AppIcons.visibilityOff;
+  Icon passwordIcon = Icon(AppIcons.visibilityOff);
 
   @observable
   Login login = Login();
@@ -37,9 +37,9 @@ abstract class _LoginControllerBase with Store {
   changeShowPassword({required BuildContext context}){
     passwordHidden = !passwordHidden;
     if (passwordHidden) {
-      passwordIcon = AppIcons.visibilityOff;
+      passwordIcon = Icon(AppIcons.visibilityOff);
     } else {
-      passwordIcon = AppIcons.visibilityOn;
+      passwordIcon = Icon(AppIcons.visibilityOn);
     }
   }
 

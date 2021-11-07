@@ -55,7 +55,7 @@ class _ForgotPasswordEmailPageState extends State<ForgotPasswordEmailPage> {
                                               hintText: "E-mail",
                                               value: forgotPasswordController.email,
                                               onChange: (value) => forgotPasswordController.email = value,
-                                              suffixIcon: AppIcons.email,
+                                              suffixIcon: Icon(AppIcons.email),
                                             ),
                                             SizedBox(height: 12),
                                             Row(

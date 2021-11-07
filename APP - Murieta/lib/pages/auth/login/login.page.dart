@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                                               hintText: "E-mail", 
                                               value: loginController.login.email,
                                               onChange: (value) => loginController.login.email = value,
-                                              suffixIcon: AppIcons.email,
+                                              suffixIcon: Icon(AppIcons.email),
                                             ),
                                             Observer(builder: (_) => AppInput(
                                               focusNode: password,

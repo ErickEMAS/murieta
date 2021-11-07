@@ -14,6 +14,7 @@ class AppColors {
   static final primary100 = Color(0xFF000000);
   static final secondary = Color(0xFFE8BC8E);
   static final white = Color(0xFFFFFFFF);
+  static final white10 = Color(0x19FFFFFF);
   static final error = Color(0xFFeb767c);
   static final background = Color(0xFF11171d);
   static final background01dp = Color(0xFF1d2329);

@@ -56,7 +56,7 @@ class _ForgotPasswordCodePageState extends State<ForgotPasswordCodePage> {
                                               hintText: "Código",
                                               value: forgotPasswordController.code,
                                               onChange: (value) => forgotPasswordController.code = value,
-                                              suffixIcon: AppIcons.code),
+                                              suffixIcon: Icon(AppIcons.code)),
                                             ),
                                             SizedBox(height: 12),
                                             Row(

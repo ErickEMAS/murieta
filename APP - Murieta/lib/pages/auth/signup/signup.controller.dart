@@ -22,13 +22,13 @@ abstract class _SignupControllerBase with Store {
   bool passwordHidden = true;
 
   @observable
-  Icon passwordIcon = AppIcons.visibilityOff;
+  Icon passwordIcon = Icon(AppIcons.visibilityOff);
 
   @observable
   bool passwordConfirmHidden = true;
 
   @observable
-  Icon passwordConfirmIcon = AppIcons.visibilityOff;
+  Icon passwordConfirmIcon = Icon(AppIcons.visibilityOff);
 
   @observable
   SignUp signUp = SignUp();
@@ -43,9 +43,9 @@ abstract class _SignupControllerBase with Store {
   changeShowPassword({required BuildContext context}){
     passwordHidden = !passwordHidden;
     if (passwordHidden) {
-      passwordIcon = AppIcons.visibilityOff;
+      passwordIcon = Icon(AppIcons.visibilityOff);
     } else {
-      passwordIcon = AppIcons.visibilityOn;
+      passwordIcon = Icon(AppIcons.visibilityOn);
     }
   }
 
@@ -53,9 +53,9 @@ abstract class _SignupControllerBase with Store {
   changeShowPasswordConfirm({required BuildContext context}){
     passwordConfirmHidden = !passwordConfirmHidden;
     if (passwordConfirmHidden) {
-      passwordConfirmIcon = AppIcons.visibilityOff;
+      passwordConfirmIcon = Icon(AppIcons.visibilityOff);
     } else {
-      passwordConfirmIcon = AppIcons.visibilityOn;
+      passwordConfirmIcon = Icon(AppIcons.visibilityOn);
     }
   }
 

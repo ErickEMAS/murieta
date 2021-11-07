@@ -63,7 +63,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                             AppInput(
                                               nextFocus: email,
                                               hintText: "Username", 
-                                              suffixIcon: AppIcons.person, 
+                                              suffixIcon: Icon(AppIcons.person), 
                                               value: signupController.signUp.username,
                                               onChange: (value) => signupController.signUp.username = value,
                                             ),
@@ -71,7 +71,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                               focusNode: email,
                                               nextFocus: password,
                                               hintText: "E-mail", 
-                                              suffixIcon: AppIcons.email, 
+                                              suffixIcon: Icon(AppIcons.email), 
                                               value: signupController.signUp.email,
                                               onChange: (value) => signupController.signUp.email = value,
                                             ),

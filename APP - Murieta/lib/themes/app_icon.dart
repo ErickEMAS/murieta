@@ -2,22 +2,25 @@ import 'package:flutter/material.dart';
 
 class AppIcons {
   //Icon Logo
-  static final logo = Icon(Icons.auto_stories);
+  static final logo = Icons.auto_stories;
 
   //Auth
-  static final email = Icon(Icons.email);
-  static final visibilityOn = Icon(Icons.visibility);
-  static final visibilityOff = Icon(Icons.visibility_off);
-  static final person = Icon(Icons.person);
-  static final code = Icon(Icons.vpn_key);
+  static final email = Icons.email;
+  static final visibilityOn = Icons.visibility;
+  static final visibilityOff = Icons.visibility_off;
+  static final person = Icons.person;
+  static final code = Icons.vpn_key;
 
   //AppBar
-  static final settings = Icon(Icons.settings);
+  static final settings = Icons.settings;
 
   //Dashboard
-  static final week = Icon(Icons.date_range);
-  static final word = Icon(Icons.font_download);
-  static final phrase = Icon(Icons.subject);
-  static final deck = Icon(Icons.style);
+  static final week = Icons.date_range;
+  static final word = Icons.font_download;
+  static final phrase = Icons.subject;
+  static final deck = Icons.style;
+  
+  //settings
+  static final darkMode = Icons.dark_mode;
 
 }
