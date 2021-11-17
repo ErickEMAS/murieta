@@ -20,7 +20,12 @@ class AppIcons {
   static final phrase = Icons.subject;
   static final deck = Icons.style;
   
-  //settings
+  //Settings
   static final darkMode = Icons.dark_mode;
+
+  //Card type
+  static final musica = Icons.headphones;
+  static final cine = Icons.subtitles;
+  static final outros = Icons.description;
 
 }

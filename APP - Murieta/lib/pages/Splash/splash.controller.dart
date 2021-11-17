@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-import 'package:murieta/pages/auth/dashboard/dash.page.dart';
 import 'package:murieta/pages/auth/login/login.page.dart';
+import 'package:murieta/pages/dashboard/dash.page.dart';
 
 part 'splash.controller.g.dart';
 

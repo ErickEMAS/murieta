@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:murieta/custom_widgets/app_box_button.dart';
 import 'package:murieta/custom_widgets/app_scaffold.dart';
 import 'package:murieta/custom_widgets/dasboard/graphic_item.dart';
-import 'package:murieta/pages/auth/settings/settings.page.dart';
+import 'package:murieta/pages/Phrases/phrases.page.dart';
+import 'package:murieta/pages/my_decks/decks.page.dart';
+import 'package:murieta/pages/settings/settings.page.dart';
+import 'package:murieta/pages/words/words.page.dart';
 import 'package:murieta/themes/app_colors.dart';
 import 'package:murieta/themes/app_dimensions.dart';
 import 'package:murieta/themes/app_icon.dart';
@@ -22,8 +25,6 @@ class _DashboardPageState extends State<DashboardPage> {
 
   @override
   Widget build(BuildContext context) {
-  var height = MediaQuery.of(context).padding.top;
-  print("teste Heigth: $height");
     return AppScaffold(
       appBarText: "Murieta",
       appBarIcon: AppIcons.logo,
@@ -34,10 +35,11 @@ class _DashboardPageState extends State<DashboardPage> {
       body: Align(
         alignment: Alignment.topCenter,
         child: Container(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.only(left: 16, right: 16),
           width: appWidth(context: context),
           child: Column(
             children: [
+              SizedBox(height: 16),
               Expanded(
                 child: ListView(
                   children: [
@@ -180,7 +182,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                 ),
                               ],
                             ), 
-                            onTap: () => print("Tocado"), 
+                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => WordsPage())),
                             width: appMinBoxWidthDashPage(context: context), 
                             heigth: appBoxHeightDashPage(context: context), 
                             color: AppColors.background01dp,
@@ -200,7 +202,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                 ),
                               ],
                             ), 
-                            onTap: () => print("Tocado"), 
+                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => PhrasesPage())),
                             width: appMinBoxWidthDashPage(context: context), 
                             heigth: appBoxHeightDashPage(context: context), 
                             color: AppColors.background01dp,
@@ -231,7 +233,7 @@ class _DashboardPageState extends State<DashboardPage> {
                           ),
                         ],
                       ), 
-                      onTap: () => print("Tocado"), 
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => DecksPage())), 
                       width: appMinBoxWidthDashPage(context: context), 
                       heigth: appBoxHeightDashPage(context: context), 
                       color: AppColors.secondary,
@@ -239,6 +241,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   ],
                 ),
               ),
+              SizedBox(height: 16),
             ],
           ),
         ),

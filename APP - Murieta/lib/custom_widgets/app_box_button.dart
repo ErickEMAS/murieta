@@ -19,7 +19,7 @@ class AppBoxButton extends StatelessWidget {
         margin: EdgeInsets.only(top: 16),
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(20),
         ),
         width: width,
         height: heigth,
