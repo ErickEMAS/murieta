@@ -2,7 +2,6 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:murieta/custom_widgets/app_box_button.dart';
 import 'package:murieta/custom_widgets/app_scaffold.dart';
-import 'package:murieta/custom_widgets/dasboard/graphic_item.dart';
 import 'package:murieta/pages/Phrases/phrases.page.dart';
 import 'package:murieta/pages/my_decks/decks.page.dart';
 import 'package:murieta/pages/settings/settings.page.dart';
@@ -71,97 +70,97 @@ class _DashboardPageState extends State<DashboardPage> {
                         ),
                       ),
                     ),
-                    AppBoxButton(
-                      content: Container(
-                        width: appMaxBoxWidthDashPage(context: context),
-                        height: appBoxHeightDashPage(context: context),
-                        padding: EdgeInsets.all(16),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "Minha Semana",
-                                  style: TextStyle(
-                                    fontSize: appFontSizeDashPage(context: context),
-                                  ),
-                                )
-                              ],
-                            ),
-                            SizedBox(height: 8),
-                            Row(
-                              children: [
-                                GraphicItem(
-                                  weekday: "S", 
-                                  width: appGrapgicWidthDashPage(context: context), 
-                                  height: appGrapgicHeightDashPage(context: context), 
-                                  percentage: 100, 
-                                  fontSize: appFontSizeDashPage(context: context),
-                                  color: AppColors.primary
-                                ),
-                                SizedBox(width: appGrapgicWidthDashPage(context: context)),
-                                GraphicItem(
-                                  weekday: "T", 
-                                  width: appGrapgicWidthDashPage(context: context), 
-                                  height: appGrapgicHeightDashPage(context: context), 
-                                  percentage: 35, 
-                                  fontSize: appFontSizeDashPage(context: context),
-                                  color: AppColors.primary
-                                ),
-                                SizedBox(width: appGrapgicWidthDashPage(context: context)),
-                                GraphicItem(
-                                  weekday: "Q", 
-                                  width: appGrapgicWidthDashPage(context: context), 
-                                  height: appGrapgicHeightDashPage(context: context), 
-                                  percentage: 70, 
-                                  fontSize: appFontSizeDashPage(context: context),
-                                  color: AppColors.primary
-                                ),
-                                SizedBox(width: appGrapgicWidthDashPage(context: context)),
-                                GraphicItem(
-                                  weekday: "Q", 
-                                  width: appGrapgicWidthDashPage(context: context), 
-                                  height: appGrapgicHeightDashPage(context: context), 
-                                  percentage: 50, 
-                                  fontSize: appFontSizeDashPage(context: context),
-                                  color: AppColors.primary
-                                ),
-                                SizedBox(width: appGrapgicWidthDashPage(context: context)),
-                                GraphicItem(
-                                  weekday: "S", 
-                                  width: appGrapgicWidthDashPage(context: context), 
-                                  height: appGrapgicHeightDashPage(context: context), 
-                                  percentage: 80, 
-                                  fontSize: appFontSizeDashPage(context: context),
-                                  color: AppColors.primary
-                                ),
-                                SizedBox(width: appGrapgicWidthDashPage(context: context)),
-                                GraphicItem(
-                                  weekday: "S", 
-                                  width: appGrapgicWidthDashPage(context: context), 
-                                  height: appGrapgicHeightDashPage(context: context), 
-                                  percentage: 10, 
-                                  fontSize: appFontSizeDashPage(context: context),
-                                  color: AppColors.primary
-                                ),
-                                SizedBox(width: appGrapgicWidthDashPage(context: context)),
-                                GraphicItem(
-                                  weekday: "D", 
-                                  width: appGrapgicWidthDashPage(context: context), 
-                                  height: appGrapgicHeightDashPage(context: context), 
-                                  percentage: 1, 
-                                  fontSize: appFontSizeDashPage(context: context),
-                                  color: AppColors.primary
-                                ),                      ],
-                            )
-                          ],
-                        ),
-                      ), 
-                      onTap: () => print("Tocado"), 
-                      width: appMaxBoxWidthDashPage(context: context), 
-                      heigth: appBoxHeightDashPage(context: context), 
-                      color: AppColors.background01dp,
-                    ),
+                    // AppBoxButton(
+                    //   content: Container(
+                    //     width: appMaxBoxWidthDashPage(context: context),
+                    //     height: appBoxHeightDashPage(context: context),
+                    //     padding: EdgeInsets.all(16),
+                    //     child: Column(
+                    //       children: [
+                    //         Row(
+                    //           children: [
+                    //             Text(
+                    //               "Minha Semana",
+                    //               style: TextStyle(
+                    //                 fontSize: appFontSizeDashPage(context: context),
+                    //               ),
+                    //             )
+                    //           ],
+                    //         ),
+                    //         SizedBox(height: 8),
+                    //         Row(
+                    //           children: [
+                    //             GraphicItem(
+                    //               weekday: "S", 
+                    //               width: appGrapgicWidthDashPage(context: context), 
+                    //               height: appGrapgicHeightDashPage(context: context), 
+                    //               percentage: 100, 
+                    //               fontSize: appFontSizeDashPage(context: context),
+                    //               color: AppColors.primary
+                    //             ),
+                    //             SizedBox(width: appGrapgicWidthDashPage(context: context)),
+                    //             GraphicItem(
+                    //               weekday: "T", 
+                    //               width: appGrapgicWidthDashPage(context: context), 
+                    //               height: appGrapgicHeightDashPage(context: context), 
+                    //               percentage: 35, 
+                    //               fontSize: appFontSizeDashPage(context: context),
+                    //               color: AppColors.primary
+                    //             ),
+                    //             SizedBox(width: appGrapgicWidthDashPage(context: context)),
+                    //             GraphicItem(
+                    //               weekday: "Q", 
+                    //               width: appGrapgicWidthDashPage(context: context), 
+                    //               height: appGrapgicHeightDashPage(context: context), 
+                    //               percentage: 70, 
+                    //               fontSize: appFontSizeDashPage(context: context),
+                    //               color: AppColors.primary
+                    //             ),
+                    //             SizedBox(width: appGrapgicWidthDashPage(context: context)),
+                    //             GraphicItem(
+                    //               weekday: "Q", 
+                    //               width: appGrapgicWidthDashPage(context: context), 
+                    //               height: appGrapgicHeightDashPage(context: context), 
+                    //               percentage: 50, 
+                    //               fontSize: appFontSizeDashPage(context: context),
+                    //               color: AppColors.primary
+                    //             ),
+                    //             SizedBox(width: appGrapgicWidthDashPage(context: context)),
+                    //             GraphicItem(
+                    //               weekday: "S", 
+                    //               width: appGrapgicWidthDashPage(context: context), 
+                    //               height: appGrapgicHeightDashPage(context: context), 
+                    //               percentage: 80, 
+                    //               fontSize: appFontSizeDashPage(context: context),
+                    //               color: AppColors.primary
+                    //             ),
+                    //             SizedBox(width: appGrapgicWidthDashPage(context: context)),
+                    //             GraphicItem(
+                    //               weekday: "S", 
+                    //               width: appGrapgicWidthDashPage(context: context), 
+                    //               height: appGrapgicHeightDashPage(context: context), 
+                    //               percentage: 10, 
+                    //               fontSize: appFontSizeDashPage(context: context),
+                    //               color: AppColors.primary
+                    //             ),
+                    //             SizedBox(width: appGrapgicWidthDashPage(context: context)),
+                    //             GraphicItem(
+                    //               weekday: "D", 
+                    //               width: appGrapgicWidthDashPage(context: context), 
+                    //               height: appGrapgicHeightDashPage(context: context), 
+                    //               percentage: 1, 
+                    //               fontSize: appFontSizeDashPage(context: context),
+                    //               color: AppColors.primary
+                    //             ),                      ],
+                    //         )
+                    //       ],
+                    //     ),
+                    //   ), 
+                    //   onTap: () => print("Tocado"), 
+                    //   width: appMaxBoxWidthDashPage(context: context), 
+                    //   heigth: appBoxHeightDashPage(context: context), 
+                    //   color: AppColors.background01dp,
+                    // ),
                     Container(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -241,7 +240,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 16),
+              
             ],
           ),
         ),

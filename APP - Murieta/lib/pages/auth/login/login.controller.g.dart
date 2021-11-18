@@ -85,19 +85,26 @@ mixin _$LoginController on _LoginControllerBase, Store {
     });
   }
 
-  final _$loginAtom = Atom(name: '_LoginControllerBase.login');
+  final _$loginDTOAtom = Atom(name: '_LoginControllerBase.loginDTO');
 
   @override
-  Login get login {
-    _$loginAtom.reportRead();
-    return super.login;
+  LoginDTO get loginDTO {
+    _$loginDTOAtom.reportRead();
+    return super.loginDTO;
   }
 
   @override
-  set login(Login value) {
-    _$loginAtom.reportWrite(value, super.login, () {
-      super.login = value;
+  set loginDTO(LoginDTO value) {
+    _$loginDTOAtom.reportWrite(value, super.loginDTO, () {
+      super.loginDTO = value;
     });
+  }
+
+  final _$loginAsyncAction = AsyncAction('_LoginControllerBase.login');
+
+  @override
+  Future login({required BuildContext context}) {
+    return _$loginAsyncAction.run(() => super.login(context: context));
   }
 
   final _$_LoginControllerBaseActionController =
@@ -144,7 +151,7 @@ isLogged: ${isLogged},
 errorMessage: ${errorMessage},
 passwordHidden: ${passwordHidden},
 passwordIcon: ${passwordIcon},
-login: ${login}
+loginDTO: ${loginDTO}
     ''';
   }
 }

@@ -21,7 +21,7 @@ class _WordsPageState extends State<WordsPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      appBarText: "Minhas Frases",
+      appBarText: "Minhas Palavras",
       body: Align(
         alignment: Alignment.topCenter,
         child: Container(

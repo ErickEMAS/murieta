@@ -56,15 +56,15 @@ class _LoginPageState extends State<LoginPage> {
                                             AppInput(
                                               nextFocus: password,
                                               hintText: "E-mail", 
-                                              value: loginController.login.email,
-                                              onChange: (value) => loginController.login.email = value,
+                                              value: loginController.loginDTO.email,
+                                              onChange: (value) => loginController.loginDTO.email = value,
                                               suffixIcon: Icon(AppIcons.email),
                                             ),
                                             Observer(builder: (_) => AppInput(
                                               focusNode: password,
                                               hintText: "Senha",
-                                              value: loginController.login.password,
-                                              onChange: (value) => loginController.login.password = value,
+                                              value: loginController.loginDTO.password,
+                                              onChange: (value) => loginController.loginDTO.password = value,
                                               obscureText: loginController.passwordHidden,
                                               suffixIcon: loginController.passwordIcon,
                                               suffixFunction: () => loginController.changeShowPassword(context: context)),
@@ -86,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                                             )
                                           ],
                                         ),
-                                        AppButton(text: "Login", onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => DashboardPage()))),
+                                        AppButton(text: "Login", onPressed: () => loginController.login(context: context)),
                                         GestureDetector(
                                           onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => SignUpPage())),
                                           child: Text(

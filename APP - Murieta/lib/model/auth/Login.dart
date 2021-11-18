@@ -1,9 +1,9 @@
-class Login {
+class LoginDTO {
 
   String email;
   String password;
 
-  Login({
+  LoginDTO({
     this.email = "",
     this.password = "",
   });
@@ -13,8 +13,8 @@ class Login {
     "password": password,
   };
 
-  static Login fromJson(Map<String, dynamic> json) {
-    final login = new Login(
+  static LoginDTO fromJson(Map<String, dynamic> json) {
+    final login = new LoginDTO(
       email: json["email"] ?? "",
       password: json["password"] ?? "",
     );

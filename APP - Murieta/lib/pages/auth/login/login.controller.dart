@@ -1,6 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:murieta/model/auth/Login.dart';
+import 'package:murieta/model/response_model.dart';
+import 'package:murieta/pages/dashboard/dash.page.dart';
+import 'package:murieta/repositories/auth.repository.dart';
 import 'package:murieta/themes/app_icon.dart';
 
 part 'login.controller.g.dart';
@@ -25,7 +30,7 @@ abstract class _LoginControllerBase with Store {
   Icon passwordIcon = Icon(AppIcons.visibilityOff);
 
   @observable
-  Login login = Login();
+  LoginDTO loginDTO = LoginDTO();
   
   @action
   setLoading(bool value) => isLoading = value;
@@ -40,6 +45,17 @@ abstract class _LoginControllerBase with Store {
       passwordIcon = Icon(AppIcons.visibilityOff);
     } else {
       passwordIcon = Icon(AppIcons.visibilityOn);
+    }
+  }
+
+  @action
+  login({required BuildContext context}) async{
+    final _authrepository = AuthRepository();
+
+    ResponseModel ret = await _authrepository.signIn(signInDto: loginDTO);
+
+    if (ret.status == 200){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => DashboardPage()));
     }
   }
 
