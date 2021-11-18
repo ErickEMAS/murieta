@@ -29,6 +29,7 @@ dependencies:
   flutter_mobx:
   flutter_modular: ^4.1.2
   connectivity_plus: ^2.0.3
+  shared_preferences: ^2.0.6
 
 dev_dependencies:
   flutter_test:

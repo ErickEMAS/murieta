@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:murieta/pages/Splash/splash.dart';
-import 'package:murieta/themes/theme.dart';
+import 'package:murieta/Presentation/pages/splash/splash.dart';
+
+import 'core/themes/theme.dart';
 
 void main() {
   runApp(MyApp());
