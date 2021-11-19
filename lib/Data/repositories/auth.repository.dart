@@ -20,8 +20,6 @@ class AuthRepository {
 
     Response retLogin = await _httpClient.post(url: url, body: payload);
 
-    final eu = retLogin;
-
     SsoDTO data = SsoDTO.fromJson(retLogin.data);
 
     response.data = data;

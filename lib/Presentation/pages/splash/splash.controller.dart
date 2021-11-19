@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
+import 'package:murieta/Data/source/local_storage.source.dart';
+import 'package:murieta/Domain/model/auth/user.model.dart';
 import 'package:murieta/Presentation/pages/auth/login/login.page.dart';
 import 'package:murieta/Presentation/pages/dashboard/dash.page.dart';
 
@@ -28,7 +30,7 @@ abstract class _SplashControllerBase with Store {
   _setErrorMessage(String value) => errorMessage = value;
 
   Future<void> init(BuildContext context) async {
-    autoLogin();
+    isLogged = await LocalStorageSource.getString(LocalStorageKeys.access_token) != "";
     Timer(new Duration(seconds: 2), () {
       if (isLogged) {
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => DashboardPage()));
@@ -37,10 +39,6 @@ abstract class _SplashControllerBase with Store {
       }
     });
       
-  }
-
-  Future<void> autoLogin() async {
-    print("AutoLogin Aqui!");
   }
 
 }

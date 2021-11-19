@@ -23,7 +23,7 @@ abstract class _AuthServiceBase with Store {
     ResponseModel responseModel = await _authrepository.signIn(signInDto: signInDto);
 
     LocalStorageSource.setString(LocalStorageKeys.access_token, responseModel.data.access_token);
-    LocalStorageSource.setString(LocalStorageKeys.me,  responseModel.data.me.toString());
+    LocalStorageSource.setString(LocalStorageKeys.me, responseModel.data.me);
 
     setCurrentUser(responseModel.data.me);
 

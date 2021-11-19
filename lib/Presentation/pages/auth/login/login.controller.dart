@@ -56,6 +56,7 @@ abstract class _LoginControllerBase with Store {
 
     if (ret.status == 200){
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => DashboardPage()));
+      Navigator.pop(context);
     }
   }
 

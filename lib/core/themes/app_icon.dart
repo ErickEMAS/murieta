@@ -22,6 +22,7 @@ class AppIcons {
   
   //Settings
   static final darkMode = Icons.dark_mode;
+  static final logout = Icons.logout;
 
   //Card type
   static final musica = Icons.headphones;

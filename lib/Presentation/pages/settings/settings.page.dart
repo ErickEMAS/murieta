@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:murieta/Presentation/custom_widgets/app_box_button.dart';
 import 'package:murieta/Presentation/custom_widgets/app_scaffold.dart';
+import 'package:murieta/Presentation/pages/settings/settings.controller.dart';
 import 'package:murieta/core/themes/app_colors.dart';
 import 'package:murieta/core/themes/app_dimensions.dart';
 import 'package:murieta/core/themes/app_icon.dart';
@@ -11,6 +12,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  final _settingsController = new SettingsController();
 
   @override
   void initState() {
@@ -35,14 +37,14 @@ class _SettingsPageState extends State<SettingsPage> {
                       children: [
                         Icon(
                           AppIcons.settings,
-                          color: AppColors.white10,
+                          color: AppColors.white,
                           size: appIconDashPage(context: context),
                         ),
                         Text(
                           "Configurações",
                           style: TextStyle(
                             fontSize: appFontSizeDashPage(context: context),
-                            color: AppColors.white10
+                            color: AppColors.white
                           ),
                         ),
                       ],
@@ -85,14 +87,14 @@ class _SettingsPageState extends State<SettingsPage> {
                       children: [
                         Icon(
                           AppIcons.settings,
-                          color: AppColors.white10,
+                          color: AppColors.white,
                           size: appIconDashPage(context: context),
                         ),
                         Text(
                           "Configurações",
                           style: TextStyle(
                             fontSize: appFontSizeDashPage(context: context),
-                            color: AppColors.white10
+                            color: AppColors.white
                           ),
                         ),
                       ],
@@ -108,14 +110,14 @@ class _SettingsPageState extends State<SettingsPage> {
                       children: [
                         Icon(
                           AppIcons.settings,
-                          color: AppColors.white10,
+                          color: AppColors.white,
                           size: appIconDashPage(context: context),
                         ),
                         Text(
                           "Configurações",
                           style: TextStyle(
                             fontSize: appFontSizeDashPage(context: context),
-                            color: AppColors.white10
+                            color: AppColors.white
                           ),
                         ),
                       ],
@@ -135,14 +137,14 @@ class _SettingsPageState extends State<SettingsPage> {
                       children: [
                         Icon(
                           AppIcons.settings,
-                          color: AppColors.white10,
+                          color: AppColors.white,
                           size: appIconDashPage(context: context),
                         ),
                         Text(
                           "Configurações",
                           style: TextStyle(
                             fontSize: appFontSizeDashPage(context: context),
-                            color: AppColors.white10
+                            color: AppColors.white
                           ),
                         ),
                       ],
@@ -157,23 +159,23 @@ class _SettingsPageState extends State<SettingsPage> {
                     content: Column(
                       children: [
                         Icon(
-                          AppIcons.settings,
-                          color: AppColors.white10,
+                          AppIcons.logout,
+                          color: AppColors.primary100,
                           size: appIconDashPage(context: context),
                         ),
                         Text(
-                          "Configurações",
+                          "Logout",
                           style: TextStyle(
                             fontSize: appFontSizeDashPage(context: context),
-                            color: AppColors.white10
+                            color: AppColors.primary100
                           ),
                         ),
                       ],
                     ), 
-                    onTap: () => print("Tocado"), 
+                    onTap: () => _settingsController.logout(context: context), 
                     width: appMinBoxWidthDashPage(context: context), 
                     heigth: appBoxHeightDashPage(context: context), 
-                    color: AppColors.background01dp,
+                    color: AppColors.error
                   ),
                 ],
               ),       
