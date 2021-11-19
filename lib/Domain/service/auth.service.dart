@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:mobx/mobx.dart';
 import 'package:murieta/Data/repositories/auth.repository.dart';
 import 'package:murieta/Data/source/local_storage.source.dart';
@@ -25,7 +27,11 @@ abstract class _AuthServiceBase with Store {
     LocalStorageSource.setString(LocalStorageKeys.access_token, responseModel.data.access_token);
     LocalStorageSource.setString(LocalStorageKeys.me, responseModel.data.me);
 
-    setCurrentUser(responseModel.data.me);
+    Map<String, dynamic> valueMap = json.decode(responseModel.data.me);
+
+    UserModel usermodel = UserModel.fromJson(valueMap);
+
+    setCurrentUser(usermodel);
 
     return responseModel;
   }

@@ -24,21 +24,6 @@ mixin _$SplashController on _SplashControllerBase, Store {
     });
   }
 
-  final _$isLoggedAtom = Atom(name: '_SplashControllerBase.isLogged');
-
-  @override
-  bool get isLogged {
-    _$isLoggedAtom.reportRead();
-    return super.isLogged;
-  }
-
-  @override
-  set isLogged(bool value) {
-    _$isLoggedAtom.reportWrite(value, super.isLogged, () {
-      super.isLogged = value;
-    });
-  }
-
   final _$errorMessageAtom = Atom(name: '_SplashControllerBase.errorMessage');
 
   @override
@@ -83,7 +68,6 @@ mixin _$SplashController on _SplashControllerBase, Store {
   String toString() {
     return '''
 isLoading: ${isLoading},
-isLogged: ${isLogged},
 errorMessage: ${errorMessage}
     ''';
   }

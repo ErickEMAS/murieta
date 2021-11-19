@@ -4,7 +4,7 @@ import 'package:murieta/Domain/model/auth/user.model.dart';
 
 class SsoDTO {
   String access_token;
-  UserModel me;
+  String me;
 
   SsoDTO({
     required this.access_token,
@@ -19,7 +19,7 @@ class SsoDTO {
   static SsoDTO fromJson(Map<String, dynamic> json) {
     final obj = new SsoDTO(
         access_token: json["access_token"] ?? "",
-        me: json["me"] != null ? UserModel.fromJson(json["me"]) : UserModel()
+        me: json["me"] != null ? jsonEncode(json["me"]).toString() : ""
     );
 
     return obj;
