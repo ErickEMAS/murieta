@@ -9,24 +9,25 @@ part 'auth.service.g.dart';
 
 class AuthService = _AuthServiceBase with _$AuthService;
 
+
+abstract class _AuthServiceBase with Store {
   @observable
   UserModel currentUser = UserModel();
 
   @action
   setCurrentUser(UserModel value) => currentUser = value;
 
-abstract class _AuthServiceBase with Store {
   final _authrepository = AuthRepository();
 
-  Future<bool> login(LoginDTO signInDto) async {
+  Future<ResponseModel> login({required LoginDTO signInDto}) async {
     ResponseModel responseModel = await _authrepository.signIn(signInDto: signInDto);
 
     LocalStorageSource.setString(LocalStorageKeys.access_token, responseModel.data.access_token);
-    LocalStorageSource.setString(LocalStorageKeys.me,  responseModel.data.me);
+    LocalStorageSource.setString(LocalStorageKeys.me,  responseModel.data.me.toString());
 
-    setCurrentUser(UserModel.fromJson(responseModel.data.me));
+    setCurrentUser(responseModel.data.me);
 
-    return true;
+    return responseModel;
   }
   
 }

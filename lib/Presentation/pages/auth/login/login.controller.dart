@@ -4,6 +4,7 @@ import 'package:mobx/mobx.dart';
 import 'package:murieta/Data/repositories/auth.repository.dart';
 import 'package:murieta/Domain/model/auth/login.dart';
 import 'package:murieta/Domain/model/response_model.dart';
+import 'package:murieta/Domain/service/auth.service.dart';
 import 'package:murieta/Presentation/pages/dashboard/dash.page.dart';
 import 'package:murieta/core/themes/app_icon.dart';
 
@@ -49,9 +50,9 @@ abstract class _LoginControllerBase with Store {
 
   @action
   login({required BuildContext context}) async{
-    final _authrepository = AuthRepository();
+    AuthService _loginController = AuthService();
 
-    ResponseModel ret = await _authrepository.signIn(signInDto: loginDTO);
+    ResponseModel ret = await _loginController.login(signInDto: loginDTO);
 
     if (ret.status == 200){
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => DashboardPage()));

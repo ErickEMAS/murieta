@@ -1,5 +1,6 @@
 class UserModel {
-  String id;
+  int id;
+  String username;
   String email;
   String phone;
   bool accountNonExpired;
@@ -10,7 +11,8 @@ class UserModel {
   String permissions;
 
   UserModel({
-    this.id = "",
+    this.id = 0,
+    this.username = "",
     this.email = "",
     this.phone = "",
     this.accountNonExpired = false,
@@ -27,6 +29,7 @@ class UserModel {
     return {
       "id": id,
       "email": email,
+      "username": username,
       "phone": phone,
       "accountNonExpired": accountNonExpired,
       "accountNonLocked": accountNonLocked,
@@ -41,6 +44,7 @@ class UserModel {
   static UserModel fromJson(Map<String, dynamic> json) {
     final obj = new UserModel(
       id: json["id"] ?? "",
+      username: json["username"] ?? "",
       email: json["email"] ?? "",
       phone: json["phone"] ?? "",
       accountNonExpired: json["accountNonExpired"] ?? false,

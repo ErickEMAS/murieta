@@ -1,4 +1,4 @@
-final baseAPI = "http://10.0.2.2:8080";
+final baseAPI = "https://murieta.herokuapp.com";
 
 class Endpoints {
   static final login = "$baseAPI/login";
