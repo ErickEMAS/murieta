@@ -1,12 +1,14 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:murieta/Domain/service/auth.service.dart';
 import 'package:murieta/Presentation/custom_widgets/app_box_button.dart';
 import 'package:murieta/Presentation/custom_widgets/app_scaffold.dart';
 import 'package:murieta/Presentation/pages/my_decks/decks.page.dart';
 import 'package:murieta/Presentation/pages/phrases/phrases.page.dart';
 import 'package:murieta/Presentation/pages/settings/settings.page.dart';
 import 'package:murieta/Presentation/pages/words/words.page.dart';
+import 'package:murieta/core/helpers/service_locator.dart';
 import 'package:murieta/core/themes/app_colors.dart';
 import 'package:murieta/core/themes/app_dimensions.dart';
 import 'package:murieta/core/themes/app_icon.dart';
@@ -17,6 +19,7 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  final _authService = serviceLocator<AuthService>(); //remove
 
   @override
   void initState() {
@@ -62,7 +65,7 @@ class _DashboardPageState extends State<DashboardPage> {
                             ),
                             SizedBox(height: 16),
                             Text(
-                              "Erick Alexandre",
+                              _authService.currentUser.name, //remove
                               style: TextStyle(
                                 fontSize: appNameFontSizeDashPage(context: context)
                               ),

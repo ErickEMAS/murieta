@@ -6,6 +6,7 @@ import 'package:murieta/Domain/model/auth/login.dart';
 import 'package:murieta/Domain/model/response_model.dart';
 import 'package:murieta/Domain/service/auth.service.dart';
 import 'package:murieta/Presentation/pages/dashboard/dash.page.dart';
+import 'package:murieta/core/helpers/service_locator.dart';
 import 'package:murieta/core/themes/app_icon.dart';
 
 part 'login.controller.g.dart';
@@ -50,13 +51,12 @@ abstract class _LoginControllerBase with Store {
 
   @action
   login({required BuildContext context}) async{
-    AuthService _loginController = AuthService();
+    AuthService _authService = serviceLocator<AuthService>();
 
-    ResponseModel ret = await _loginController.login(signInDto: loginDTO);
+    ResponseModel ret = await _authService.login(signInDto: loginDTO);
 
     if (ret.status == 200){
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => DashboardPage()));
-      Navigator.pop(context);
     }
   }
 

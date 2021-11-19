@@ -36,29 +36,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     content: Column(
                       children: [
                         Icon(
-                          AppIcons.settings,
-                          color: AppColors.white,
-                          size: appIconDashPage(context: context),
-                        ),
-                        Text(
-                          "Configurações",
-                          style: TextStyle(
-                            fontSize: appFontSizeDashPage(context: context),
-                            color: AppColors.white
-                          ),
-                        ),
-                      ],
-                    ), 
-                    onTap: () => print("Tocado"), 
-                    width: appMinBoxWidthDashPage(context: context), 
-                    heigth: appBoxHeightDashPage(context: context), 
-                    color: AppColors.background01dp,
-                  ),
-                  SizedBox(width: 16),
-                  AppBoxButton(
-                    content: Column(
-                      children: [
-                        Icon(
                           AppIcons.darkMode,
                           color: AppColors.primary100,
                           size: appIconDashPage(context: context),
@@ -76,33 +53,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     width: appMinBoxWidthDashPage(context: context), 
                     heigth: appBoxHeightDashPage(context: context), 
                     color: AppColors.primary,
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AppBoxButton(
-                    content: Column(
-                      children: [
-                        Icon(
-                          AppIcons.settings,
-                          color: AppColors.white,
-                          size: appIconDashPage(context: context),
-                        ),
-                        Text(
-                          "Configurações",
-                          style: TextStyle(
-                            fontSize: appFontSizeDashPage(context: context),
-                            color: AppColors.white
-                          ),
-                        ),
-                      ],
-                    ), 
-                    onTap: () => print("Tocado"), 
-                    width: appMinBoxWidthDashPage(context: context), 
-                    heigth: appBoxHeightDashPage(context: context), 
-                    color: AppColors.background01dp,
                   ),
                   SizedBox(width: 16),
                   AppBoxButton(
@@ -178,8 +128,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     color: AppColors.error
                   ),
                 ],
-              ),       
-                       
+              ),
             ],
           ),
         ),

@@ -9,13 +9,14 @@ import 'package:murieta/Domain/model/auth/user.model.dart';
 import 'package:murieta/Domain/service/auth.service.dart';
 import 'package:murieta/Presentation/pages/auth/login/login.page.dart';
 import 'package:murieta/Presentation/pages/dashboard/dash.page.dart';
+import 'package:murieta/core/helpers/service_locator.dart';
 
 part 'splash.controller.g.dart';
 
 class SplashController = _SplashControllerBase with _$SplashController;
 
 abstract class _SplashControllerBase with Store {
-  final _authService = AuthService();
+  final _authService = serviceLocator<AuthService>();
 
   @observable
   bool isLoading = false;
@@ -31,8 +32,7 @@ abstract class _SplashControllerBase with Store {
 
   Future<void> init(BuildContext context) async {
     final storageMe = await LocalStorageSource.getString(LocalStorageKeys.me);
-    print("Me: ${storageMe}");
-
+    
     Timer(new Duration(seconds: 2), () {
       if (storageMe != "") {
         Map<String, dynamic> valueMap = json.decode(storageMe);
